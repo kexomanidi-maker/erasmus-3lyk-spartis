@@ -1,0 +1,1688 @@
+
+        /* --- CSS Στυλ --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            font-size: 18px;
+        }
+
+        header {
+            background-color: #003366;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo h1 { font-size: 1.2rem; }
+        .logo span { color: #ffcc00; }
+
+        .nav-container { display: flex; align-items: center; gap: 20px; }
+        
+        nav ul { display: flex; list-style: none; gap: 15px; }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active { color: #ffcc00; background: rgba(255,255,255,0.1); }
+
+        /* --- Μηχανισμός Αλλαγής Γλώσσας μέσω CSS --- */
+        .lang-mode-el .lang-en { display: none !important; }
+        .lang-mode-en .lang-el { display: none !important; }
+
+        .lang-switcher {
+            display: flex; gap: 5px; background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2);
+        }
+        .lang-btn { color: #ccc; cursor: pointer; text-decoration: none; font-size: 0.8rem; font-weight: bold; padding: 2px 6px; border-radius: 10px; transition: 0.3s; }
+        .lang-btn:hover { color: white; }
+        .lang-btn.active { color: #003366; background-color: #ffcc00; pointer-events: none; }
+
+        /* Sections */
+        .page-section { display: none; padding: 2rem 1rem; }
+        .page-section.active-section { display: block; }
+
+        .hero {
+            background: linear-gradient(rgba(0, 34, 68, 0.82), rgba(0, 51, 102, 0.82)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+        .hero h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+        .about-box { background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        
+        /* Stats */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+        .stat-card { background: #003366; color: white; text-align: center; padding: 1.5rem; border-radius: 8px; }
+        .stat-card h3 { color: #ffcc00; font-size: 2rem; }
+
+        /* Years Tabs */
+        .year-tabs { display: flex; gap: 10px; margin-bottom: 2rem; justify-content: center; flex-wrap: wrap; }
+        .tab-btn { background: #ddd; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 5px; transition: 0.3s; }
+        .tab-btn.active { background: #003366; color: white; }
+        .year-content { display: none; }
+        .year-content.active { display: block; }
+
+        /* Cards Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-top: 4px solid #003366; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-content { padding: 1.5rem; }
+        .badge { background: #e1f0ff; color: #003366; padding: 3px 8px; font-size: 0.8rem; border-radius: 4px; font-weight: bold; }
+        
+        /* Εικόνες Καρτών */
+        .card-img { width: 100%; height: 180px; object-fit: cover; background-color: #ddd; }
+
+        .sub-heading { color: #003366; margin: 2rem 0 1rem 0; border-bottom: 2px solid #ffcc00; padding-bottom: 5px; }
+
+        /* Buttons */
+        .more-btn { background: #003366; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 15px; transition: 0.3s; width: 100%; text-align: center;}
+        .more-btn:hover { background: #ffcc00; color: #003366; }
+
+        /* --- MODAL STYLES --- */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 1rem; }
+        .modal-content { background: white; padding: 2rem; border-radius: 8px; max-width: 700px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; animation: fadeIn 0.3s ease; }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.8rem; cursor: pointer; color: #666; font-weight: bold; }
+        .close-modal:hover { color: #333; }
+        .modal h3 { color: #003366; margin-bottom: 15px; border-bottom: 2px solid #ffcc00; padding-bottom: 5px; }
+        .modal h4 { color: #002244; margin: 15px 0 5px 0; }
+        .modal ul { margin-left: 20px; margin-bottom: 15px; }
+        .modal-img { width: 100%; border-radius: 8px; margin: 15px 0; max-height: 350px; object-fit: cover; background-color: #eee; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+       /* --- FOOTER --- */
+footer {
+    background-color: white !important;
+    padding: 3rem 1rem 1rem 1rem;
+    border-top: 1px dashed #ccc; /* Η διακεκομμένη γραμμή της φωτογραφίας */
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center; /* Ευθυγραμμίζει το λογότυπο με το κείμενο κάθετα */
+    gap: 3rem;
+    padding-bottom: 2rem;
+}
+
+.footer-eu-logo {
+    flex-shrink: 0; /* Αποτρέπει το λογότυπο από το να μικρύνει υπερβολικά */
+}
+
+.footer-eu-logo img {
+    max-width: 280px; 
+    height: auto;
+}
+
+.footer-disclaimer {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify;
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Προσαρμογή για μικρές οθόνες (Κινητά) */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+    .footer-disclaimer {
+        text-align: center;
+    }
+}
+  /* --- SLIDER / CAROUSEL STYLES --- */
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 15px auto;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000;
+}
+
+.slider-slide {
+    display: none; /* Κρύβει όλες τις εικόνες αρχικά */
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slider-slide.active-slide {
+    display: block; /* Εμφανίζει μόνο την ενεργή εικόνα */
+    animation: fadeSlide 0.4s ease-in-out;
+}
+
+@keyframes fadeSlide {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Κουμπιά (Βελάκια) */
+.slider-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background: rgba(0, 51, 102, 0.7);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    user-select: none;
+    transition: 0.3s;
+}
+
+.slider-btn.next {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+}
+
+.slider-btn:hover {
+    background: #ffcc00;
+    color: #003366;
+}
+
+/* --- Διάταξη για την καρτέλα "Το Σχολείο" --- */
+.school-hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+@media (max-width: 850px) {
+    .school-hero-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   ERASMUS+ ACCREDITATION 2023
+   ========================================== */
+
+.accreditation-page {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Κεντρικό πλαίσιο */
+
+.accreditation-hero {
+    background: white;
+    border: 1px solid #d9e2ec;
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 51, 102, 0.06);
+}
+
+.accreditation-heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.accreditation-icon {
+    font-size: 42px;
+}
+
+.accreditation-heading h2 {
+    color: #003366;
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.accreditation-heading p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/* Στατιστικά */
+
+.accreditation-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.accreditation-stat {
+    text-align: center;
+}
+
+.accreditation-stat h3 {
+    color: #003366;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.accreditation-stat p {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Σύνθημα */
+
+.accreditation-motto {
+    text-align: center;
+    color: #003366;
+    font-weight: bold;
+    font-size: 1.25rem;
+    padding-top: 25px;
+}
+
+/* Αναλυτικό περιεχόμενο */
+
+.accreditation-content {
+    background: white;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.accreditation-content h2 {
+    color: #003366;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.accreditation-content h3 {
+    color: #003366;
+    font-size: 1.3rem;
+    margin: 30px 0 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.accreditation-content p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+
+/* Πλαίσια στόχων */
+
+.accreditation-goals {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 25px 0 35px;
+}
+
+.accreditation-goal {
+    background: #f4f7fb;
+    border-left: 4px solid #ffcc00;
+    padding: 22px;
+    border-radius: 8px;
+}
+
+.accreditation-goal-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.accreditation-goal h4 {
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.accreditation-goal p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* Τελικό μήνυμα */
+
+.accreditation-content .accreditation-final {
+    color: #003366;
+    font-weight: bold;
+    background: #f0f6fc;
+    border-left: 4px solid #003366;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+/* Προσαρμογή για κινητά */
+
+@media (max-width: 768px) {
+
+    .accreditation-hero,
+    .accreditation-content {
+        padding: 20px;
+    }
+
+    .accreditation-stats {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .accreditation-goals {
+        grid-template-columns: 1fr;
+    }
+
+    .accreditation-heading h2 {
+        font-size: 1.3rem;
+    }
+
+    .accreditation-content h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* =========================================
+   ERASMUS+ KA1 - 2018 & 2020
+   ========================================= */
+
+.ka1-feature {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 51, 102, 0.08);
+}
+
+/* Κεντρικός τίτλος */
+
+.ka1-heading {
+    background: linear-gradient(135deg, #003366, #005599);
+    color: white;
+    padding: 35px;
+    border-bottom: 5px solid #ffcc00;
+}
+
+.ka1-label {
+    display: inline-block;
+    color: #003366;
+    background: #ffcc00;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+.ka1-heading h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.ka1-subtitle {
+    color: #e5efff;
+    font-size: 1rem;
+}
+
+/* Φωτογραφίες και εισαγωγικό κείμενο */
+
+.ka1-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 30px;
+    align-items: center;
+}
+
+.ka1-intro .slider-container {
+    width: 100%;
+    margin: 0;
+}
+
+.ka1-intro .slider-slide {
+    height: 320px;
+    object-fit: cover;
+}
+
+.ka1-summary h3 {
+    color: #003366;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 8px;
+}
+
+.ka1-summary p {
+    line-height: 1.8;
+}
+
+/* Δραστηριότητες */
+
+.ka1-activities {
+    padding: 10px 30px 30px;
+}
+
+.ka1-activities > h3 {
+    color: #003366;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+}
+
+.ka1-activity {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid #e6eaf0;
+}
+
+.ka1-number {
+    color: #003366;
+    background: #ffcc00;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.ka1-activity h4 {
+    color: #003366;
+    margin-bottom: 8px;
+}
+
+.ka1-activity p {
+    color: #555;
+    line-height: 1.7;
+}
+
+/* Τελικό συμπέρασμα */
+
+.ka1-conclusion {
+    background: #eef5fc;
+    border-left: 5px solid #ffcc00;
+    padding: 25px 30px;
+    color: #003366;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* Προσαρμογή κινητών */
+
+@media (max-width: 768px) {
+    .ka1-intro {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .ka1-heading {
+        padding: 25px 20px;
+    }
+
+    .ka1-heading h2 {
+        font-size: 1.4rem;
+    }
+
+    .ka1-activities {
+        padding: 10px 20px 25px;
+    }
+
+    .ka1-intro .slider-slide {
+        height: 240px;
+    }
+
+    .ka1-conclusion {
+        padding: 20px;
+    }
+}
+
+
+
+/* KA1 - Σύνδεση με τη Διαπίστευση Erasmus+ */
+
+.ka1-accreditation-link {
+    background: #f4f7fb;
+    padding: 25px 30px;
+    border-top: 1px solid #dce5ef;
+}
+
+.ka1-accreditation-link h3 {
+    color: #003366;
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+}
+
+.ka1-accreditation-link p {
+    color: #444;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   RESULTS - FILTERS & DELIVERABLES
+   ========================================= */
+
+/* Κουμπιά φίλτρων */
+.results-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 20px 0 35px;
+}
+
+.result-filter {
+    padding: 11px 20px;
+    background: #e8edf3;
+    color: #003366;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.result-filter:hover {
+    background: #d0dce9;
+}
+
+.result-filter.active {
+    background: #003366;
+    color: white;
+}
+
+/* Κάρτες παραδοτέων */
+.results-grid {
+    align-items: stretch;
+}
+
+.result-card {
+    border-top: 4px solid #ffcc00;
+}
+
+/* Εξώφυλλο */
+.result-cover {
+    height: 190px;
+    background: linear-gradient(135deg, #003366, #0066aa);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.result-cover-icon {
+    font-size: 55px;
+}
+
+/* Περιεχόμενο */
+.result-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.result-content p {
+    margin-bottom: 18px;
+}
+
+/* Κουμπί ανοίγματος */
+.result-open-btn {
+    display: block;
+    background: #003366;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 11px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.result-open-btn:hover {
+    background: #ffcc00;
+    color: #003366;
+}
+
+/* Μήνυμα χωρίς αποτελέσματα */
+.results-empty {
+    text-align: center;
+    color: #666;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+/* Κινητές συσκευές */
+@media (max-width: 768px) {
+    .result-filter {
+        padding: 9px 13px;
+        font-size: 0.85rem;
+    }
+}
+
+/* =========================================
+   ΟΛΟΚΛΗΡΩΜΕΝΗ ΒΙΩΜΑΤΙΚΗ ΔΡΑΣΤΗΡΙΟΤΗΤΑ
+   ========================================= */
+
+.result-activity-label {
+    margin-top: 18px;
+    padding: 12px 15px;
+    background: #edf5ee;
+    color: #27613b;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* ΜΕΓΕΘΟΣ ΓΡΑΜΜΑΤΩΝ ΣΤΙΣ ΚΑΡΤΕΣ */
+
+#results .result-content p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* =========================================
+   RESULTS - PDF VIEW & DOWNLOAD
+   ========================================= */
+
+#results .result-file-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+#results .result-file-actions .result-open-btn {
+    margin-top: 0;
+}
+
+#results .result-download-btn {
+    display: block;
+    padding: 13px 18px;
+    background: #ffcc00;
+    color: #003366;
+    border-radius: 6px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    transition: background 0.25s;
+}
+
+#results .result-download-btn:hover {
+    background: #e6b800;
+}
+
+/* ==========================================
+   CLIMACT NOW! - FEATURED DIGITAL GUIDE
+   ========================================== */
+
+/* ΜΕΓΑΛΗ ΟΡΙΖΟΝΤΙΑ ΚΑΡΤΑ */
+#results .climact-guide {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: #ffffff;
+    border: 1px solid #dce5ed;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+}
+
+/* ΜΠΛΕ ΕΠΙΚΕΦΑΛΙΔΑ */
+#results .climact-guide-header {
+    background: linear-gradient(120deg, #003366, #07558d);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+}
+
+#results .climact-guide-icon {
+    font-size: 65px;
+    flex-shrink: 0;
+}
+
+#results .climact-guide-tag {
+    display: inline-block;
+    color: #ffcc00;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+#results .climact-guide-heading h3 {
+    color: #ffffff;
+    font-size: 27px;
+    line-height: 1.4;
+    margin: 0 0 12px;
+}
+
+#results .climact-guide-heading p {
+    color: #e5eef7;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* ΠΕΡΙΕΧΟΜΕΝΟ */
+#results .climact-guide-body {
+    padding: 30px;
+}
+
+#results .climact-guide-body > p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333333;
+    margin: 0 0 25px;
+}
+
+/* ΤΡΕΙΣ ΘΕΜΑΤΙΚΕΣ */
+#results .climact-guide-topics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 25px;
+}
+
+#results .climact-guide-topic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #f1f6fa;
+    color: #003366;
+    border-radius: 8px;
+    padding: 22px 12px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#results .climact-guide-topic-icon {
+    font-size: 29px;
+}
+
+/* ΚΟΥΜΠΙΑ ΕΛΛΗΝΙΚΟΥ ΚΑΙ ΑΓΓΛΙΚΟΥ ΟΔΗΓΟΥ */
+#results .climact-guide-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+#results .climact-guide-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 17px 16px;
+    border-radius: 7px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#results .climact-guide-link:hover {
+    transform: translateY(-2px);
+}
+
+#results .climact-guide-link-el {
+    background: #003366;
+    color: #ffffff;
+}
+
+#results .climact-guide-link-el:hover {
+    background: #07558d;
+    color: #ffffff;
+}
+
+#results .climact-guide-link-en {
+    background: #ffcc00;
+    color: #003366;
+}
+
+#results .climact-guide-link-en:hover {
+    background: #e6b800;
+    color: #003366;
+}
+
+/* ΠΡΟΣΑΡΜΟΓΗ ΣΕ ΚΙΝΗΤΑ */
+@media (max-width: 768px) {
+
+    #results .climact-guide-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 18px;
+    }
+
+    #results .climact-guide-heading h3 {
+        font-size: 23px;
+    }
+
+    #results .climact-guide-body {
+        padding: 20px;
+    }
+
+    #results .climact-guide-topics {
+        grid-template-columns: 1fr;
+    }
+
+    #results .climact-guide-links {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   ΑΠΟΤΕΛΕΣΜΑΤΑ - 2 ΚΑΡΤΕΣ ΑΝΑ ΓΡΑΜΜΗ
+   ========================================== */
+
+#results .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+/* Καμία κάρτα δεν καταλαμβάνει δύο στήλες */
+#results .results-grid > .result-card {
+    grid-column: auto !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+/* Για κινητά: μία κάρτα ανά γραμμή */
+@media (max-width: 768px) {
+    #results .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Δύο κάρτες ανά γραμμή στα Αποτελέσματα */
+
+#results .results-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 24px !important;
+}
+
+/* Όλες οι κάρτες καταλαμβάνουν μία στήλη */
+#results .results-grid > .result-card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0;
+}
+
+/* Κινητά */
+@media (max-width: 768px) {
+    #results .results-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ==========================================
+   ΑΠΟΤΕΛΕΣΜΑΤΑ - ΠΙΟ ΣΥΜΠΑΓΕΙΣ ΚΑΡΤΕΣ
+   ========================================== */
+
+/* Μικρότερα κείμενα περιγραφής */
+#results .result-content p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Τίτλοι παραδοτέων */
+#results .result-content h3 {
+    font-size: 18px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+/* Ετικέτες έτους και είδους παραδοτέου */
+#results .result-tag {
+    font-size: 12px;
+}
+
+/* Λιγότερο κενό μέσα στις κάρτες */
+#results .result-content {
+    padding: 18px;
+}
+
+/* Μικρότερο μπλε εξώφυλλο */
+#results .result-cover {
+    height: 125px;
+    gap: 6px;
+}
+
+/* Μικρότερα εικονίδια */
+#results .result-cover-icon {
+    font-size: 36px;
+}
+
+/* Μικρότερα κουμπιά */
+#results .result-open-btn,
+#results .result-download-btn {
+    font-size: 14px;
+    padding: 9px 12px;
+}
+
+/* Μικρότερο κενό ανάμεσα στις κάρτες */
+#results .results-grid {
+    gap: 18px;
+}
+
+/* ==========================================
+   RESULTS - COMPACT LIBRARY CARDS
+   ========================================== */
+
+/* Δύο κάρτες ανά γραμμή */
+#results .results-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    align-items: stretch;
+}
+
+/* Καμία κάρτα δεν πιάνει όλη τη σειρά */
+#results .results-grid > .result-card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Συμπαγής κάρτα */
+#results .result-card.card {
+    border-top: 3px solid #ffcc00;
+    border-radius: 9px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Μικρότερο μπλε εξώφυλλο */
+#results .result-card.card .result-cover {
+    height: 76px;
+    min-height: 76px;
+    padding: 10px 14px;
+    gap: 3px;
+    background: #003366;
+}
+
+/* Μικρότερο εικονίδιο */
+#results .result-cover-icon {
+    font-size: 26px;
+    line-height: 1.1;
+}
+
+/* Μικρότερος τίτλος προγράμματος */
+#results .result-cover > span {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+}
+
+/* Λευκό περιεχόμενο */
+#results .result-card.card .result-content {
+    padding: 15px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Ετικέτα */
+#results .result-tag {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+/* Τίτλος */
+#results .result-content h3 {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+    color: #003366;
+}
+
+/* Περιγραφή */
+#results .result-content p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 9px;
+}
+
+/* Εμφάνιση μόνο τριών γραμμών */
+#results .result-card:not(.expanded) .result-content p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+/* Πλήρης περιγραφή μετά το Περισσότερα */
+#results .result-card.expanded .result-content p {
+    display: block;
+    overflow: visible;
+}
+
+/* Κουμπί Περισσότερα / Λιγότερα */
+#results .result-read-more {
+    align-self: flex-start;
+    border: none;
+    background: transparent;
+    color: #005599;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 0;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+#results .result-read-more:hover {
+    color: #003366;
+    text-decoration: underline;
+}
+
+/* Κουμπιά αρχείων και συνδέσμων */
+#results .result-card.card .result-open-btn,
+#results .result-card.card .result-download-btn {
+    font-size: 13px;
+    padding: 9px 12px;
+    line-height: 1.4;
+    margin-top: auto;
+}
+
+/* Μικρότερη ενημερωτική ετικέτα */
+#results .result-activity-label {
+    font-size: 12px;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+/* Κινητές συσκευές */
+@media (max-width: 768px) {
+    #results .results-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   COMPACT CLIMACT PROJECT MANAGEMENT GUIDE
+   ========================================== */
+
+/* Συνολική κάρτα */
+#results .results-grid > .climact-guide {
+    grid-column: auto !important;
+    width: 100%;
+    min-width: 0;
+    border-radius: 9px;
+    border-top: 3px solid #ffcc00;
+}
+
+/* Μικρότερο μπλε επάνω μέρος */
+#results .climact-guide-header {
+    padding: 14px 16px;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Εικονίδιο */
+#results .climact-guide-icon {
+    font-size: 30px;
+}
+
+/* Μικρότερη ετικέτα */
+#results .climact-guide-tag {
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+/* Τίτλος */
+#results .climact-guide-heading h3 {
+    font-size: 16px;
+    line-height: 1.35;
+    margin-bottom: 5px;
+}
+
+/* Υπότιτλος */
+#results .climact-guide-heading p {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* Λευκό μέρος */
+#results .climact-guide-body {
+    padding: 15px 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Περιγραφή */
+#results .climact-guide-body > p {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-bottom: 8px;
+}
+
+/* Μόνο τρεις γραμμές αρχικά */
+#results .climact-guide:not(.expanded)
+.climact-guide-body > p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+}
+
+/* Ολόκληρο το κείμενο μετά το Περισσότερα */
+#results .climact-guide.expanded
+.climact-guide-body > p {
+    display: block;
+    overflow: visible;
+}
+
+/* Κουμπί Περισσότερα */
+#results .climact-guide .result-read-more {
+    align-self: flex-start;
+    border: none;
+    background: transparent;
+    color: #005599;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 0;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#results .climact-guide .result-read-more:hover {
+    text-decoration: underline;
+}
+
+/* Τρεις θεματικές ενότητες */
+#results .climact-guide-topics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin: 8px 0 12px;
+}
+
+#results .climact-guide-topic {
+    padding: 10px 5px;
+    gap: 5px;
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+#results .climact-guide-topic-icon {
+    font-size: 20px;
+}
+
+/* Σύνδεσμοι των δύο βιβλίων */
+#results .climact-guide-links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: auto;
+}
+
+#results .climact-guide-link {
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 10px 8px;
+    gap: 4px;
+}
+
+/* Μικρές οθόνες */
+@media (max-width: 480px) {
+    #results .climact-guide-topics {
+        grid-template-columns: 1fr;
+    }
+
+    #results .climact-guide-links {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==========================================
+   PREVIEW IMAGE INSIDE RESULT CARD
+   ========================================== */
+
+#results .result-preview-link {
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+#results .result-preview-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #d9e2ec;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#results .result-preview-image:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================
+   NOVALIS - IMAGE VISIBLE ONLY WHEN EXPANDED
+   ========================================== */
+
+/* Αρχικά η εικόνα είναι κρυμμένη */
+#results .result-card:not(.expanded)
+.novalis-expand-image {
+    display: none;
+}
+
+/* Εμφάνιση όταν πατάμε Περισσότερα */
+#results .result-card.expanded
+.novalis-expand-image {
+    display: block;
+    margin: 12px 0;
+}
+
+/* Μέγεθος εικόνας όταν ανοίγει */
+#results .novalis-expand-image .result-preview-image {
+    width: 100%;
+    height: auto;
+    max-height: 260px;
+    object-fit: contain;
+    border-radius: 7px;
+    border: 1px solid #dce5ed;
+    background: #f8fafc;
+}
+
+/* Μικρή λεζάντα, αν υπάρχει */
+#results .novalis-expand-image .result-preview-caption {
+    font-size: 12px;
+    color: #667085;
+}
+
+/* ==========================================
+   HOSTING 2026-2027
+   ΟΛΟΚΛΗΡΕΣ ΦΩΤΟΓΡΑΦΙΕΣ ΣΤΟ SLIDESHOW
+   ========================================== */
+
+#slider-hosting2627 {
+    background: #eef2f7;
+}
+
+#slider-hosting2627 .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-spain video.slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    background: #eef2f7;
+}
+#slider-lithuania {
+    background: #eef2f7;
+}
+
+#slider-lithuania .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-bologna-teacher {
+    background: #eef2f7;
+}
+
+#slider-bologna-teacher .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-expert-oct {
+    background: #eef2f7;
+}
+
+#slider-expert-oct .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-hosting {
+    background: #eef2f7;
+}
+
+#slider-hosting .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-serbia {
+    background: #eef2f7;
+}
+
+#slider-serbia .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+#slider-romania {
+    background: #eef2f7;
+}
+
+#slider-romania .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+/* ROMANIA - Φωτογραφίες και βίντεο */
+
+#slider-romania video.slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    background: #eef2f7;
+}
+#slider-hosting-2022 {
+    background: #eef2f7;
+}
+
+#slider-hosting-2022 .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+
+/* ==========================================
+   KA121 2026-2027
+   HOSTING & INVITED EXPERT - TWO COLUMNS
+   ========================================== */
+
+#year2627 .hosting-2627-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+#year2627 .hosting-2627-grid > .card {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+}
+
+@media (max-width: 768px) {
+    #year2627 .hosting-2627-grid {
+        grid-template-columns: 1fr;
+    }
+}
+#slider-spain-2025 {
+    background: #eef2f7;
+}
+
+#slider-spain-2025 .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+/* BELGIUM 2025 - SLIDESHOW */
+
+#slider-belgium-2025 {
+    background: #eef2f7;
+    height: 350px;
+    overflow: hidden;
+}
+
+#slider-belgium-2025 .slider-slide {
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    background: #eef2f7;
+}
+
+#slider-belgium-2025 .slider-slide:not(.active-slide) {
+    display: none;
+}
+
+#slider-belgium-2025 .slider-slide.active-slide {
+    display: block;
+}
+
+/* =====================================
+   ERASMUS+ GRAPHIC COVERS
+   FOR MOBILITIES WITHOUT PHOTOS
+   ===================================== */
+
+.mobility-graphic-cover {
+    height: 220px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 18px 22px;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+.taranto-cover {
+    background:
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(255, 204, 0, 0.18),
+            transparent 42%
+        ),
+        linear-gradient(135deg, #003366, #1264a3);
+}
+
+.graphic-cover-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #d8eaff;
+}
+
+.graphic-cover-center {
+    text-align: center;
+}
+
+.graphic-cover-symbol {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.graphic-cover-city {
+    font-size: clamp(17px, 2vw, 23px);
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #ffffff;
+}
+
+.graphic-cover-subtitle {
+    font-size: 13px;
+    margin-top: 7px;
+    color: #e5effc;
+}
+
+.graphic-cover-date {
+    margin-top: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffcc00;
+}
+
+.graphic-cover-bottom {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1.3px;
+    color: #c8e0f5;
+}
+
+/* BELGIUM RONSE - JOB SHADOWING COVER */
+
+.belgium-js-cover {
+    background:
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(255, 204, 0, 0.18),
+            transparent 42%
+        ),
+        linear-gradient(135deg, #003366, #1264a3);
+}
+
+/* BELGIUM JOB SHADOWING - MODAL BANNER */
+
+.belgium-js-modal-banner {
+    padding: 28px 15px;
+    margin: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #003366, #1264a3);
+}
+
+.belgium-js-modal-symbol {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.belgium-js-modal-banner h4 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.belgium-js-modal-banner p {
+    color: #ffcc00;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.belgium-js-modal-banner span {
+    display: block;
+    font-size: 13px;
+    color: #e5effc;
+}
+/* DUBROVNIK - AI TEACHER TRAINING */
+
+.dubrovnik-cover {
+    background:
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(255, 204, 0, 0.18),
+            transparent 42%
+        ),
+        linear-gradient(135deg, #003366, #1264a3);
+}
+
+/* DUBROVNIK - MODAL GRAPHIC BANNER */
+
+.dubrovnik-modal-banner {
+    padding: 28px 15px;
+    margin: 20px 0;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #003366, #1264a3);
+}
+
+.dubrovnik-modal-symbol {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.dubrovnik-modal-banner h4 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.dubrovnik-modal-banner p {
+    color: #ffcc00;
+    font-weight: 700;
+    margin: 8px 0;
+}
+
+.dubrovnik-modal-banner span {
+    display: block;
+    font-size: 13px;
+    color: #e5effc;
+}
+
