@@ -5425,6 +5425,25 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
             }
         }
 
+
+        // Load images as soon as their panel becomes visible.
+        // Hidden galleries stay lazy until visitors open them.
+        function prioritizeVisibleImages(container) {
+            if (!container) return;
+            container.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                // Ignore images inside other hidden tabs or inactive slides.
+                if (img.closest('.year-content:not(.active)')) return;
+                if (img.closest('.page-section:not(.active-section)')) return;
+                if (img.classList.contains('slider-slide') && !img.classList.contains('active-slide')) return;
+                if (img.closest('.modal') && img.closest('.modal').style.display !== 'flex') return;
+                img.loading = 'eager';
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            prioritizeVisibleImages(document.querySelector('.page-section.active-section'));
+        });
+
         // Εναλλαγή Κεντρικών Σελίδων (Menu)
         function showSection(sectionId) {
             document.querySelectorAll('.page-section').forEach(section => {
@@ -5437,6 +5456,7 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
             });
             const selectedLink = document.getElementById('nav-' + sectionId);
             if (selectedLink) selectedLink.classList.add('active');
+            prioritizeVisibleImages(document.getElementById(sectionId));
             window.scrollTo(0, 0);
         }
 
@@ -5446,6 +5466,7 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
                 content.classList.remove('active');
             });
             document.getElementById(yearId).classList.add('active');
+            prioritizeVisibleImages(document.getElementById(yearId));
 
             document.querySelectorAll('.tab-btn').forEach(button => {
                 const isSelected = button.getAttribute('onclick') === "showYear('" + yearId + "')";
@@ -5458,6 +5479,7 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
             const modal = document.getElementById(modalId);
             if (!modal) return;
             modal.style.display = 'flex';
+            prioritizeVisibleImages(modal);
             document.body.style.overflow = 'hidden';
         }
 
@@ -5531,6 +5553,7 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
 
             // Εμφανίζουμε το νέο slide
             slides[newIndex].classList.add('active-slide');
+            if (slides[newIndex].tagName === 'IMG') slides[newIndex].loading = 'eager';
         }
 
         

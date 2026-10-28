@@ -174,7 +174,7 @@ footer {
     margin: 15px auto;
     overflow: hidden;
     border-radius: 8px;
-    background-color: #000;
+    background-color: #eef2f7; /* Light placeholder while gallery images load */
 }
 
 .slider-slide {
@@ -183,6 +183,7 @@ footer {
     height: 350px;
     object-fit: cover;
     border-radius: 8px;
+    background-color: #eef2f7;
 }
 
 .slider-slide.active-slide {
