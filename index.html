@@ -13,26 +13,37 @@
             <h1 class="lang-el">3ο ΓΕΛ Σπάρτης | <span>Erasmus+</span></h1>
             <h1 class="lang-en">3rd High School of Sparta | <span>Erasmus+</span></h1>
         </div>
-        <div class="nav-container">
+        <!-- Κουμπί μενού για κινητά -->
+        <button
+            class="mobile-menu-btn"
+            id="mobile-menu-btn"
+            type="button"
+            onclick="toggleMobileMenu()"
+            aria-label="Άνοιγμα ή κλείσιμο μενού"
+            aria-controls="mobile-navigation"
+            aria-expanded="false">
+            ☰
+        </button>
+        <div class="nav-container" id="mobile-navigation">
             <nav>
                 <ul>
                     <li>
-                        <a onclick="showSection('home')" id="nav-home" class="active">
+                        <a onclick="showSection('home'); closeMobileMenu()" id="nav-home" class="active">
                             <span class="lang-el">Αρχική</span><span class="lang-en">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a onclick="showSection('school')" id="nav-school">
+                        <a onclick="showSection('school'); closeMobileMenu()" id="nav-school">
                             <span class="lang-el">Το Σχολείο</span><span class="lang-en">Our School</span>
                         </a>
                     </li>
                     <li>
-                        <a onclick="showSection('mobilities')" id="nav-mobilities">
+                        <a onclick="showSection('mobilities'); closeMobileMenu()" id="nav-mobilities">
                             <span class="lang-el">Κινητικότητες</span><span class="lang-en">Mobilities</span>
                         </a>
                     </li>
                     <li>
-                        <a onclick="showSection('results')" id="nav-results">
+                        <a onclick="showSection('results'); closeMobileMenu()" id="nav-results">
                             <span class="lang-el">Αποτελέσματα</span><span class="lang-en">Results</span>
                         </a>
                     </li>
@@ -712,8 +723,8 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
 
     <section id="mobilities" class="page-section">
         <div class="container">
-            <h2 class="lang-el" style="text-align:center; margin-bottom:2rem;">Εκπαιδευτικά Ταξίδια & Δράσεις</h2>
-            <h2 class="lang-en" style="text-align:center; margin-bottom:2rem;">Educational Trips & Actions</h2>
+            <h2 class="lang-el" style="text-align:center; margin-bottom:2rem;">Ευρωπαϊκά Σχέδια & Δράσεις</h2>
+            <h2 class="lang-en" style="text-align:center; margin-bottom:2rem;">European Projects & Actions</h2>
 
             <div class="year-tabs">
 
@@ -5933,6 +5944,28 @@ As part of our Erasmus+ Accreditation, we extend learning beyond the classroom b
     </footer>
 
     <script>
+
+
+        // Άνοιγμα / κλείσιμο μενού κινητών
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-navigation');
+            const button = document.getElementById('mobile-menu-btn');
+
+            const isOpen = menu.classList.toggle('mobile-open');
+
+            button.setAttribute('aria-expanded', String(isOpen));
+            button.textContent = isOpen ? '✕' : '☰';
+        }
+
+        // Κλείσιμο μετά την επιλογή σελίδας
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-navigation');
+            const button = document.getElementById('mobile-menu-btn');
+
+            menu.classList.remove('mobile-open');
+            button.setAttribute('aria-expanded', 'false');
+            button.textContent = '☰';
+        }
         // Αλλαγή Γλώσσας (GR / EN)
         function changeLanguage(lang) {
             const htmlTag = document.documentElement;
